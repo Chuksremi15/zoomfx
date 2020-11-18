@@ -48,7 +48,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    res.send(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
 
@@ -61,10 +61,10 @@ const server = app.listen(
   )
 );
 
-// Handle unhandled promise rejection
-process.on('unhandledRejection', (err, promise) => {
-  console.log(`Error: ${err.message}`);
+// // Handle unhandled promise rejection
+// process.on('unhandledRejection', (err, promise) => {
+//   console.log(`Error: ${err.message}`);
 
-  //Close the server & exit process
-  server.close(() => process.exit(1));
-});
+//   //Close the server & exit process
+//   server.close(() => process.exit(1));
+// });
