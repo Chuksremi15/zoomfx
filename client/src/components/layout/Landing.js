@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-const Landing = ({auth: {isAuthenticated}}) => {
+const Landing = ({auth: {isAuthenticated, loading}}) => {
   const [navData, setNavData] = useState({
     isactive: false,
     active: false,
@@ -14,7 +14,7 @@ const Landing = ({auth: {isAuthenticated}}) => {
     setNavData({...navData, isactive: !isactive, active: !active});
   };
 
-  if (isAuthenticated) {
+  if (isAuthenticated && loading === false) {
     return <Redirect to='/account-overview' />;
   }
 
