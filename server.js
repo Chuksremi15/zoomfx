@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
@@ -5,16 +6,8 @@ const colors = require('colors');
 const cookieParser = require('cookie-parser');
 const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
-const path = require('path');
 
-// Route files
-const users = require('./routes/users');
-const auth = require('./routes/auth');
-const accounts = require('./routes/accounts');
-const plans = require('./routes/plans');
-const notifications = require('./routes/notifications');
-
-// Load env vars
+// // Load env vars
 dotenv.config({path: './config/config.env'});
 
 // Connect to database
@@ -25,13 +18,20 @@ const app = express();
 // Body parser
 app.use(express.json());
 
+// Route files
+const users = require('./routes/users');
+const auth = require('./routes/auth');
+const accounts = require('./routes/accounts');
+const plans = require('./routes/plans');
+const notifications = require('./routes/notifications');
+
 // Cookie parser
 // app.use(cookieParser());
 
-//Dev logging middleware
-if (process.env.NODE_ENV === 'development') {
-  app.use(morgan('dev'));
-}
+// //Dev logging middleware
+// if (process.env.NODE_ENV === 'development') {
+//   app.use(morgan('dev'));
+// }
 
 //Mount routers
 app.use('/api/v1/users', users);
@@ -49,7 +49,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    res.send(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
 
@@ -62,10 +62,10 @@ const server = app.listen(
   )
 );
 
-// // Handle unhandled promise rejection
-// process.on('unhandledRejection', (err, promise) => {
-//   console.log(`Error: ${err.message}`);
+// Handle unhandled promise rejection
+process.on('unhandledRejection', (err, promise) => {
+  console.log(`Error: ${err.message}`);
 
-//   //Close the server & exit process
-//   server.close(() => process.exit(1));
-// });
+  //Close the server & exit process
+  server.close(() => process.exit(1));
+});
