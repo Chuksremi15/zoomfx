@@ -3,7 +3,6 @@ const asyncHandler = require('../middleware/async');
 const User = require('../models/User');
 const sendEmail = require('../utils/sendEmail');
 const ErrorResponse = require('../utils/errorResponse');
-const {options} = require('../routes/auth');
 
 //@desc     Register user
 //@route    Post /api/v1/auth/register
