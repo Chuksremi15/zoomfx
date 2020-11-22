@@ -16,14 +16,16 @@ const Support = (props) => {
             <div>
               <div className='container '>
                 <div className='row m-1'>
-                  <div className='card card-center '>
+                  <div className='card card-center'>
                     <img
                       src='/img/logo/logo.png'
                       className='img-fluid d-flex align-self-center mb-3'
                       width='150'
                     />
-                    <h4>We look forward to hearing from you</h4>
-                    <h5>Email: Zoomfx@gmail.com</h5>
+                    <h5 className='mb-3'>
+                      We look forward to hearing from you
+                    </h5>
+                    <h5 className='bg-light mb-3'>Email: Zoomfx@gmail.com</h5>
                     <h5>Phone: 08021323377</h5>
                   </div>
                 </div>
