@@ -52,48 +52,37 @@ const App = () => {
       <Router>
         <Route exact path='/' component={Landing} />
         <Alert />
-        <Route exact path='/signup' component={SignUp} />
-        <Route exact path='/signup/:id' component={ReferralSignUp} />
-        <Route exact path='/signin' component={SignIn} />
-        <Route exact path='/forgot-password' component={ForgotPassword} />
-        <Route
-          exact
-          path='/forgot-password-message'
-          component={ForgotPasswordMessage}
-        />
-        <PrivateRoute
-          exact
-          path='/account-overview'
-          component={AccountOverview}
-        />
-        <PrivateRoute exact path='/profile' component={Profile} />
-        <PrivateRoute exact path='/edit-profile' component={EditProfile} />
-        <PrivateRoute exact path='/plans' component={Plans} />
-        <PrivateRoute exact path='/plan/:id' component={Plan} />
-        <PrivateRoute exact path='/deposite' component={Deposite} />
-        <PrivateRoute
-          exact
-          path='/deposite-request'
-          component={DepositeRequest}
-        />
-        <PrivateRoute
-          exact
-          path='/deposite-request/:id'
-          component={DepositeRequestID}
-        />
-        <PrivateRoute exact path='/add-account' component={AddAccount} />
-        <PrivateRoute exact path='/not-authorize' component={NotAuthorize} />
-        <PrivateRoute exact path='/edit-account' component={EditAccount} />
-        <PrivateRoute exact path='/withdraw' component={Withdraw} />
-        <PrivateRoute
-          exact
-          path='/withdraw-request'
-          component={WithdrawRequest}
-        />
-        <PrivateRoute exact path='/support' component={Support} />
-        <AdminRoute exact path='/admin' component={Admin} />
-        <AdminRoute exact path='/user/:id' component={User} />
-        <AdminRoute exact path='/userplan/:id' component={EditUserPlan} />
+        <Switch>
+          <Route path='/signup' component={SignUp} />
+          <Route path='/signup/:id' component={ReferralSignUp} />
+          <Route path='/signin' component={SignIn} />
+          <Route path='/forgot-password' component={ForgotPassword} />
+          <Route
+            path='/forgot-password-message'
+            component={ForgotPasswordMessage}
+          />
+
+          <PrivateRoute path='/account-overview' component={AccountOverview} />
+          <PrivateRoute path='/profile' component={Profile} />
+          <PrivateRoute path='/edit-profile' component={EditProfile} />
+          <PrivateRoute path='/plans' component={Plans} />
+          <PrivateRoute path='/plan/:id' component={Plan} />
+          <PrivateRoute path='/deposite' component={Deposite} />
+          <PrivateRoute path='/deposite-request' component={DepositeRequest} />
+          <PrivateRoute
+            path='/deposite-request/:id'
+            component={DepositeRequestID}
+          />
+          <PrivateRoute path='/add-account' component={AddAccount} />
+          <PrivateRoute path='/not-authorize' component={NotAuthorize} />
+          <PrivateRoute path='/edit-account' component={EditAccount} />
+          <PrivateRoute path='/withdraw' component={Withdraw} />
+          <PrivateRoute path='/withdraw-request' component={WithdrawRequest} />
+          <PrivateRoute path='/support' component={Support} />
+          <AdminRoute path='/admin' component={Admin} />
+          <AdminRoute path='/user/:id' component={User} />
+          <AdminRoute path='/userplan/:id' component={EditUserPlan} />
+        </Switch>
       </Router>
     </Provider>
   );
