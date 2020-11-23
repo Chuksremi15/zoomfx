@@ -1,6 +1,7 @@
 const path = require('path');
-const express = require('express');
 const dotenv = require('dotenv');
+const express = require('express');
+
 // const morgan = require('morgan');
 const colors = require('colors');
 
@@ -45,10 +46,11 @@ app.use(errorHandler);
 
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'client/build')));
-  //
+  // set static folder
+  app.use(express.static('client/build'));
+
   app.get('*', (req, res) => {
-    res.sendFile(path.join((__dirname = 'client/build/index.html')));
+    res.send(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
 
