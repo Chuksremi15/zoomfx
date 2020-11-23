@@ -54,7 +54,7 @@ const App = () => {
         <Alert />
         <Switch>
           <Route path='/signup' component={SignUp} />
-          <Route path='/signup/:id' component={ReferralSignUp} />
+          <Route path='/sign-up/:id' component={ReferralSignUp} />
           <Route path='/signin' component={SignIn} />
           <Route path='/forgot-password' component={ForgotPassword} />
           <Route

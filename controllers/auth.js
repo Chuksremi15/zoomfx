@@ -27,7 +27,7 @@ exports.register = asyncHandler(async (req, res, next) => {
   firstname = newName(firstname);
   lastname = newName(lastname);
 
-  referralLink = `${req.protocol}://${req.get('host')}/signup/`;
+  referralLink = `${req.protocol}://${req.get('host')}/sign-up/`;
 
   console.log(referralLink);
 

@@ -6,8 +6,10 @@ import {register} from '../../actions/auth';
 import PropTypes from 'prop-types';
 
 import {getUser} from '../../actions/admin';
+import Spinner from '../layout/Spinner';
 
 const ReferralSignUp = ({
+  match: {params},
   getUser,
   register,
   setAlert,
@@ -21,7 +23,7 @@ const ReferralSignUp = ({
   },
 }) => {
   useEffect(() => {
-    getUser(id);
+    getUser(params.id);
 
     setFormData({
       referralname:
@@ -64,7 +66,9 @@ const ReferralSignUp = ({
     }
   };
 
-  return (
+  return userLoading ? (
+    <Spinner />
+  ) : (
     <div>
       <section className='sign-section'>
         <Link to='/'>
