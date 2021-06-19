@@ -26,9 +26,7 @@ const AddAccount = ({addAccount, history}) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
     addAccount(formData, history);
-    console.log(formData);
   };
 
   return (
